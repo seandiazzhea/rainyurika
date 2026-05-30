@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio — Rainy Yurika</title>
+  
+  <!-- Dokumentasi: Font baru menggunakan Outfit dan Inter dari Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* RESET & DASAR */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      /* Dokumentasi: Palet Warna Baru 
+         Menggunakan variasi warna Slate (abu-abu kebiruan) agar tidak membosankan */
+      --bg-gradient: radial-gradient(circle at top left, #ffffff 0%, #e2e8f0 100%);
+      --bg-solid: #f1f5f9; /* Fallback kalau gradient tidak jalan */
+      --bg-glass: rgba(255, 255, 255, 0.6); /* Efek kaca untuk komponen */
+      --border: rgba(15, 23, 42, 0.08);
+      --border2: rgba(15, 23, 42, 0.15);
+      --text: #334155;
+      --muted: #64748b;
+      --accent: #0f172a;
+      
+      /* Dokumentasi: Variabel font baru */
+      --font-head: 'Outfit', sans-serif;
+      --font-body: 'Inter', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg-solid);
+      background-image: var(--bg-gradient);
+      background-attachment: fixed; /* Biar gradasinya diam saat di-scroll */
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* NAVIGASI */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 4rem;
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: var(--font-head);
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--accent);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+    .nav-links { display: flex; gap: 3rem; list-style: none; }
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+
+    /* TOMBOL UTAMA */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.75rem;
+      border-radius: 8px; /* Sudut sedikit membulat menyesuaikan font Outfit */
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .btn-primary { background: var(--accent); color: #ffffff; border: 1px solid var(--accent); box-shadow: 0 4px 12px rgba(15,23,42,0.15); }
+    .btn-primary:hover { background: transparent; color: var(--accent); box-shadow: none; }
+    .btn-ghost { background: transparent; color: var(--accent); border: 1px solid var(--border2); }
+    .btn-ghost:hover { border-color: var(--accent); background: var(--bg-glass); }
+
+    /* HERO SECTION */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 8rem 2rem 4rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero-photo-wrap { margin-bottom: 2rem; }
+    .hero-photo {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      border: 2px solid var(--bg-glass);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+      overflow: hidden;
+      cursor: pointer;
+      position: relative;
+      background: var(--bg-glass);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s;
+      margin: 0 auto;
+    }
+    .hero-photo:hover { border-color: var(--accent); transform: translateY(-5px); }
+    .hero-photo img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: none;
+      position: absolute; top: 0; left: 0;
+    }
+    .photo-ph { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; color: var(--muted); pointer-events: none; }
+    .photo-ph svg { width: 24px; height: 24px; opacity: 0.5; }
+    .photo-ph span { font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600;}
+    
+    .hero-label { font-size: 0.8rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.5rem; font-weight: 600; }
+    .hero-name {
+      font-family: var(--font-head);
+      font-size: clamp(3rem, 7vw, 6rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+    }
+    .hero-tagline { font-size: 1.1rem; color: var(--text); max-width: 600px; line-height: 1.8; margin-bottom: 2.5rem; }
+    .hero-cta { display: flex; gap: 1rem; justify-content: center; }
+
+    /* LAYOUT SECTION UMUM */
+    section { padding: 8rem 4rem; border-bottom: 1px solid var(--border); }
+    .section-header { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 4rem; }
+    .section-num { font-size: 0.8rem; color: var(--muted); font-weight: 600; letter-spacing: 0.15em; }
+    .section-title { font-family: var(--font-head); font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 800; letter-spacing: -0.02em; color: var(--accent); }
+
+    /* ABOUT SECTION */
+    #about .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
+    .about-bio { font-size: 1.05rem; color: var(--text); line-height: 1.8; }
+    .about-bio strong { color: var(--accent); font-weight: 600; }
+    .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .stat-box { 
+      background: var(--bg-glass); 
+      backdrop-filter: blur(8px);
+      padding: 1.5rem; 
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+    }
+    .stat-label { font-size: 0.8rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; font-weight: 600;}
+    .stat-text { font-family: var(--font-head); font-size: 1.25rem; font-weight: 700; color: var(--accent); }
+
+    /* SKILLS SECTION */
+    #skills .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2.5rem; }
+    .skill-category { 
+      border: 1px solid var(--border); 
+      padding: 2rem; 
+      border-radius: 12px; 
+      background: var(--bg-glass); 
+      backdrop-filter: blur(8px);
+      transition: transform 0.3s, box-shadow 0.3s; 
+    }
+    .skill-category:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+    .skill-cat-title { font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); font-weight: 700; margin-bottom: 1.5rem; }
+    .skill-tags { display: flex; flex-direction: column; gap: 0.75rem; }
+    .skill-tag { font-size: 0.95rem; color: var(--text); display: flex; align-items: center; }
+    .skill-tag::before { content: "—"; margin-right: 10px; color: var(--muted); }
+
+    /* PROJECTS SECTION */
+    #projects .projects-list { display: flex; flex-direction: column; gap: 6rem; }
+    .project-item { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+    .project-item:nth-child(even) { direction: rtl; } 
+    .project-item:nth-child(even) > * { direction: ltr; }
+    
+    .project-info { padding: 2rem 0; }
+    .project-name { font-family: var(--font-head); font-size: 1.75rem; font-weight: 800; color: var(--accent); margin-bottom: 1rem; }
+    .project-desc { font-size: 1rem; color: var(--text); line-height: 1.7; margin-bottom: 1.5rem; }
+    .project-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .project-tag { font-size: 0.75rem; padding: 0.4rem 1rem; border-radius: 100px; background: rgba(15,23,42,0.05); color: var(--accent); font-weight: 600; }
+    
+    .project-imgs { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+    .project-imgs .img-slot:first-child { grid-column: span 2; height: 250px; }
+    .img-slot { background: rgba(255,255,255,0.5); cursor: pointer; position: relative; overflow: hidden; border-radius: 12px; height: 150px; border: 1px solid var(--border); box-shadow: 0 4px 10px rgba(0,0,0,0.03);}
+    .img-slot:hover { border-color: var(--border2); }
+    .img-slot img { width: 100%; height: 100%; object-fit: cover; display: none; position: absolute; top: 0; left: 0; transition: transform 0.5s ease; }
+    .img-slot:hover img { transform: scale(1.05); }
+    .slot-ph { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; color: var(--muted); pointer-events: none; }
+    .slot-ph svg { width: 24px; height: 24px; opacity: 0.3; }
+
+    /* EXPERIENCE SECTION */
+    .exp-list { border-left: 2px solid var(--border2); padding-left: 2.5rem; margin-left: 1rem; display: flex; flex-direction: column; gap: 4rem; }
+    .exp-item { position: relative; }
+    .exp-item::before {
+      content: ''; position: absolute; left: -2.9rem; top: 0.2rem;
+      width: 14px; height: 14px; background: var(--accent); border: 3px solid var(--bg-solid); border-radius: 50%;
+    }
+    .exp-dates { font-size: 0.85rem; color: var(--muted); font-weight: 600; margin-bottom: 0.5rem; display: flex; gap: 1rem; }
+    .exp-role { font-family: var(--font-head); font-size: 1.4rem; font-weight: 700; color: var(--accent); margin-bottom: 0.25rem; }
+    .exp-org { font-size: 1rem; color: var(--text); margin-bottom: 1rem; font-weight: 500; }
+    .exp-desc { font-size: 1rem; color: var(--text); line-height: 1.7; max-width: 700px; }
+    .exp-imgs { display: flex; gap: 1rem; margin-top: 1.5rem; }
+    .exp-imgs .img-slot { height: 120px; width: 180px; }
+
+    /* CONTACT SECTION */
+    #contact { border-bottom: none; text-align: center; padding: 10rem 4rem; }
+    .contact-headline { font-family: var(--font-head); font-size: clamp(2.5rem, 6vw, 5rem); font-weight: 800; color: var(--accent); margin-bottom: 1.5rem; }
+    .contact-sub { font-size: 1.1rem; color: var(--text); margin: 0 auto 3rem; max-width: 500px; }
+    .contact-links { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; }
+    .contact-link {
+      display: flex; align-items: center; gap: 0.5rem; padding: 0.8rem 2rem;
+      background: var(--bg-glass); backdrop-filter: blur(8px);
+      border: 1px solid var(--border2); border-radius: 100px; text-decoration: none;
+      color: var(--accent); font-weight: 600; font-size: 0.95rem; transition: all 0.3s;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+    }
+    .contact-link:hover { background: var(--accent); color: #ffffff; transform: translateY(-3px); box-shadow: 0 10px 20px rgba(15,23,42,0.1); }
+
+    /* FOOTER */
+    footer { padding: 2rem 4rem; text-align: center; border-top: 1px solid var(--border); background: transparent; }
+    footer p { font-size: 0.85rem; color: var(--muted); }
+
+    /* UTILITIES & ANIMATIONS */
+    .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* LIGHTBOX */
+    .lightbox {
+      display: flex; position: fixed; inset: 0; background: rgba(255,255,255,0);
+      z-index: 999; align-items: center; justify-content: center; cursor: zoom-out;
+      pointer-events: none; transition: background 0.3s ease; backdrop-filter: blur(0px);
+      -webkit-backdrop-filter: blur(0px);
+    }
+    .lightbox.active { background: rgba(241,245,249,0.9); pointer-events: all; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+    .lightbox img {
+      max-width: 90vw; max-height: 90vh; object-fit: contain; border-radius: 8px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.15); transform: scale(0.9); opacity: 0;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+    .lightbox.active img { transform: scale(1); opacity: 1; }
+
+    /* RESPONSIVE / MOBILE */
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      
+      section { padding: 4rem 1.5rem; }
+      #hero { padding: 6rem 1.5rem 3rem; }
+      .hero-name { font-size: clamp(2.5rem, 10vw, 3.5rem); }
+      
+      #about .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+      #projects .project-item { grid-template-columns: 1fr; gap: 2rem; }
+      .project-item:nth-child(even) { direction: ltr; }
+      
+      .exp-list { padding-left: 1.5rem; margin-left: 0.5rem; }
+      .exp-item::before { left: -1.9rem; }
+      .exp-imgs { flex-wrap: wrap; }
+      .exp-imgs .img-slot { width: 100%; height: 200px; }
+      
+      #contact { padding: 6rem 1.5rem; }
+      .contact-links { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Input file tersembunyi -->
+  <input type="file" id="fi-hero" accept="image/*" style="display:none" />
+  <input type="file" id="fi-p1-1" accept="image/*" style="display:none" />
+  <input type="file" id="fi-p1-2" accept="image/*" style="display:none" />
+  <input type="file" id="fi-p1-3" accept="image/*" style="display:none" />
+  <input type="file" id="fi-p2-1" accept="image/*" style="display:none" />
+  <input type="file" id="fi-p2-2" accept="image/*" style="display:none" />
+  <input type="file" id="fi-p2-3" accept="image/*" style="display:none" />
+  <input type="file" id="fi-e1-1" accept="image/*" style="display:none" />
+  <input type="file" id="fi-e1-2" accept="image/*" style="display:none" />
+  <input type="file" id="fi-e1-3" accept="image/*" style="display:none" />
+  <input type="file" id="fi-e2-1" accept="image/*" style="display:none" />
+  <input type="file" id="fi-e2-2" accept="image/*" style="display:none" />
+  <input type="file" id="fi-e2-3" accept="image/*" style="display:none" />
+  <input type="file" id="fi-e2-4" accept="image/*" style="display:none" />
+
+  <nav>
+    <a href="#hero" class="nav-logo">Adhitya.</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section id="hero">
+    <div class="hero-photo-wrap fade-in">
+      <div class="hero-photo" id="hero-photo-el">
+        <div class="photo-ph" id="hero-ph" style="display:none;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="12" cy="8" r="4"/>
+            <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+          </svg>
+          <span>Upload</span>
+        </div>
+        <img id="hero-img" src="poto propil.png" alt="Foto profil Adhitya Nuryana" style="display:block;" />
+      </div>
+    </div>
+    <div class="fade-in">
+      <p class="hero-label">Portfolio — 2026</p>
+      <h1 class="hero-name">Adhitya Nuryana</h1>
+      <p class="hero-tagline">
+        Aspiring Front Office Concierge passionate about hospitality and guest service, with a background in Informatics Engineering.
+      </p>
+      <div class="hero-cta">
+        <a href="#projects" class="btn btn-primary">View Projects</a>
+        <a href="#contact" class="btn btn-ghost">Contact Me</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="section-header fade-in">
+      <span class="section-num">01.</span>
+      <h2 class="section-title">About Me</h2>
+    </div>
+    <div class="about-grid fade-in">
+      <div class="about-bio">
+        <p>
+          Hi, I'm <strong>Adhitya Nuryana</strong>. A graduate of Informatics Engineering from Indraprasta PGRI University. I have a strong interest in the front office field in the hotel industry, especially in providing excellent guest service and creating a positive first impression for guests. I enjoy interacting with people, improving my communication skills, and learning how hotel operations work, particularly in the front office area.
+        </p>
+        <br>
+        <p>
+          When I'm not studying or learning about hospitality, I usually spend my time reading novels and listening to music as a way to improve my English skills and broaden my understanding of language.
+        </p>
+      </div>
+      <div class="about-stats">
+        <div class="stat-box">
+          <div class="stat-label">Languages</div>
+          <div class="stat-text">ID, EN, JP</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-label">Career Path</div>
+          <div class="stat-text">FO Concierge</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-label">Guest Service</div>
+          <div class="stat-text">Developing</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-label">Communication</div>
+          <div class="stat-text">Strong</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="section-header fade-in">
+      <span class="section-num">02.</span>
+      <h2 class="section-title">Expertise</h2>
+    </div>
+    <div class="skills-grid fade-in">
+      <div class="skill-category">
+        <div class="skill-cat-title">Languages</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Indonesian (Native)</span>
+          <span class="skill-tag">English (Intermediate)</span>
+          <span class="skill-tag">Japanese (Basic)</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <div class="skill-cat-title">Concierge Skills</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Guest Assistance</span>
+          <span class="skill-tag">Local Info Support</span>
+          <span class="skill-tag">Booking & Reservations</span>
+          <span class="skill-tag">Information Service</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <div class="skill-cat-title">Soft Skills</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Guest Communication</span>
+          <span class="skill-tag">Service Orientation</span>
+          <span class="skill-tag">Problem Handling</span>
+          <span class="skill-tag">Adaptability</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <div class="skill-cat-title">Others</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Basic Microsoft Office</span>
+          <span class="skill-tag">Computer Skills</span>
+          <span class="skill-tag">Time Management</span>
+          <span class="skill-tag">Professional Appearance</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="section-header fade-in">
+      <span class="section-num">03.</span>
+      <h2 class="section-title">Selected Work</h2>
+    </div>
+    <div class="projects-list">
+      
+      <!-- Project 1 -->
+      <div class="project-item fade-in">
+        <div class="project-info">
+          <h3 class="project-name">Game Development Project</h3>
+          <p class="project-desc">
+            Worked as a Game Designer with roles as Level Designer, Mechanics Designer, and Character Modeler. This experience improved my creativity, attention to detail, and ability to understand user experience—skills that are important in delivering satisfying guest experiences in hospitality.
+          </p>
+          <div class="project-tags">
+            <span class="project-tag">C++</span>
+            <span class="project-tag">Unity</span>
+            <span class="project-tag">Figma</span>
+            <span class="project-tag">Notion</span>
+          </div>
+        </div>
+        <div class="project-imgs">
+          <div class="img-slot" data-fi="fi-p1-1" data-img="img-p1-1">
+            <img id="img-p1-1" src="ssrpoyek1.png" alt="" style="display:block;" />
+            <div class="slot-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15l-5-5L5 21"/></svg></div>
+          </div>
+          <div class="img-slot" data-fi="fi-p1-2" data-img="img-p1-2">
+            <img id="img-p1-2" src="ssproyek2.png" alt="" style="display:block;" />
+            <div class="slot-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15l-5-5L5 21"/></svg></div>
+          </div>
+          <div class="img-slot" data-fi="fi-p1-3" data-img="img-p1-3">
+            <img id="img-p1-3" src="ssproyek3.png" alt="" style="display:block;" />
+            <div class="slot-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15l-5-5L5 21"/></svg></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 2 -->
+      <div class="project-item fade-in">
+        <div class="project-info">
+          <h3 class="project-name">Decision Support System</h3>
+          <p class="project-desc">
+            Developed a web-based decision support system using the Profile Matching method for selecting outstanding teachers at SDN Manggarai 05 Pagi. This project enhanced my analytical thinking, problem-solving skills, and ability to work systematically.
+          </p>
+          <div class="project-tags">
+            <span class="project-tag">HTML</span>
+            <span class="project-tag">CSS</span>
+          </div>
+        </div>
+        <div class="project-imgs">
+          <div class="img-slot" data-fi="fi-p2-1" data-img="img-p2-1">
+            <img id="img-p2-1" src="skripsi1.png" alt="" style="display:block;" />
+            <div class="slot-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15l-5-5L5 21"/></svg></div>
+          </div>
+          <div class="img-slot" data-fi="fi-p2-2" data-img="img-p2-2">
+            <img id="img-p2-2" src="skripsi2.png" alt="" style="display:block;" />
+            <div class="slot-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15l-5-5L5 21"/></svg></div>
+          </div>
+          <div class="img-slot" data-fi="fi-p2-3" data-img="img-p2-3">
+            <img id="img-p2-3" src="skripsi3.png" alt="" style="display:block;" />
+            <div class="slot-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15l-5-5L5 21"/></svg></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="section-header fade-in">
+      <span class="section-num">04.</span>
+      <h2 class="section-title">Career Journey</h2>
+    </div>
+    <div class="exp-list">
+      
+      <div class="exp-item fade-in">
+        <div class="exp-dates">
+          <span>Jan 2020</span> — <span>Apr 2020</span>
+        </div>
+        <div class="exp-role">Engineering Intern</div>
+        <div class="exp-org">Luminor Hotel Kota</div>
+        <p class="exp-desc">
+          Assisted in maintaining hotel facilities and ensuring operational readiness. Gained experience working in a hospitality environment, understanding hotel operations, and supporting service quality behind the scenes.
+        </p>
+        <div class="exp-imgs">
+          <div class="img-slot" data-fi="fi-e1-1" data-img="img-e1-1">
+            <img id="img-e1-1" src="eks1.jpeg" alt="" style="display:block;" />
+            <div class="slot-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15l-5-5L5 21"/></svg></div>
+          </div>
+          <div class="img-slot" data-fi="fi-e1-2" data-img="img-e1-2">
+            <img id="img-e1-2" src="eks2.jpeg" alt="" style="display:block;" />
+            <div class="slot-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15l-5-5L5 21"/></svg></div>
+          </div>
+          <div class="img-slot" data-fi="fi-e1-3" data-img="img-e1-3">
+            <img id="img-e1-3" src="eks3.jpeg" alt="" style="display:block;" />
+            <div class="slot-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15l-5-5L5 21"/></svg></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-item fade-in">
+        <div class="exp-dates">
+          <span>Feb 2025</span> — <span>Apr 2026</span>
+        </div>
+        <div class="exp-role">Production Staff (Daily Worker)</div>
+        <div class="exp-org">Holland Bakery</div>
+        <p class="exp-desc">
+          Handled production processes while maintaining quality and hygiene standards. Developed strong discipline, adaptability, and the ability to work under pressure.
+        </p>
+        <div class="exp-imgs">
+          <div class="img-slot" data-fi="fi-e2-1" data-img="img-e2-1">
+            <img id="img-e2-1" src="eks4.jpeg" alt="" style="display:block;" />
+            <div class="slot-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15l-5-5L5 21"/></svg></div>
+          </div>
+          <div class="img-slot" data-fi="fi-e2-2" data-img="img-e2-2">
+            <img id="img-e2-2" src="eks5.jpeg" alt="" style="display:block;" />
+            <div class="slot-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15l-5-5L5 21"/></svg></div>
+          </div>
+          <div class="img-slot" data-fi="fi-e2-3" data-img="img-e2-3">
+            <img id="img-e2-3" src="eks6.jpeg" alt="" style="display:block;" />
+            <div class="slot-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15l-5-5L5 21"/></svg></div>
+          </div>
+          <div class="img-slot" data-fi="fi-e2-4" data-img="img-e2-4">
+            <img id="img-e2-4" src="eks7.jpeg" alt="" style="display:block;" />
+            <div class="slot-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15l-5-5L5 21"/></svg></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="fade-in">
+      <h2 class="contact-headline">Let's Connect.</h2>
+      <p class="contact-sub">
+        Open for collaborations, internships, or just a good conversation. Feel free to reach out.
+      </p>
+      <div class="contact-links">
+        <a href="#" class="contact-link" id="email-link">Email Me</a>
+        <a href="https://wa.me/6285157550253" target="_blank" class="contact-link">WhatsApp</a>
+        <a href="https://instagram.com/adht_nry" target="_blank" class="contact-link">Instagram</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>©️ 2026 Adhitya Nuryana. Minimalist Portfolio Template.</p>
+  </footer>
+
+  <div class="lightbox" id="lightbox">
+    <img id="lightbox-img" src="" alt="" />
+  </div>
+
+  <script>
+    // Fade-in Animation
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // Active Nav Highlight
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-links a');
+    window.addEventListener('scroll', () => {
+      let cur = '';
+      sections.forEach(s => { if (window.scrollY >= s.offsetTop - 150) cur = s.id; });
+      navLinks.forEach(a => {
+        a.style.color = a.getAttribute('href') === `#${cur}` ? 'var(--accent)' : 'var(--muted)';
+      });
+    });
+
+    // Lightbox Logic
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+
+    function openLightbox(src) {
+      lightboxImg.src = src;
+      lightbox.classList.add('active');
+    }
+    lightbox.addEventListener('click', () => lightbox.classList.remove('active'));
+
+    // Upload & Lightbox Handler
+    function bindUpload(triggerEl, fileInputId, imgId) {
+      const fi  = document.getElementById(fileInputId);
+      const img = document.getElementById(imgId);
+      const ph  = triggerEl.querySelector('.photo-ph, .slot-ph');
+
+      triggerEl.addEventListener('click', e => {
+        e.preventDefault(); e.stopPropagation();
+        if (img.style.display === 'block' && img.src && !img.src.includes('base64')) {
+          openLightbox(img.src);
+        } else if (img.style.display === 'block' && img.src.includes('base64')){
+           openLightbox(img.src);
+        } else {
+          fi.click();
+        }
+      });
+
+      fi.addEventListener('change', e => {
+        const file = e.target.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = ev => {
+          img.src = ev.target.result;
+          img.style.display = 'block';
+          if (ph) ph.style.display = 'none';
+        };
+        reader.readAsDataURL(file);
+      });
+    }
+
+    // Bind Hero Photo
+    const heroPhotoEl = document.getElementById('hero-photo-el');
+    if (heroPhotoEl) bindUpload(heroPhotoEl, 'fi-hero', 'hero-img');
+
+    // Bind Project & Exp Photos
+    document.querySelectorAll('.img-slot[data-fi]').forEach(el => {
+      bindUpload(el, el.dataset.fi, el.dataset.img);
+    });
+
+    // Bind existing images for lightbox out of the box
+    document.querySelectorAll('.img-slot img, #hero-img').forEach(img => {
+      if (img.getAttribute('src') && img.getAttribute('src') !== '') {
+        img.addEventListener('click', e => {
+          e.stopPropagation();
+          openLightbox(img.src);
+        });
+      }
+    });
+
+    // Email link responsive handler
+    const emailLink = document.getElementById('email-link');
+    const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+    emailLink.href = isMobile
+      ? 'mailto:adhityanuryana9@gmail.com'
+      : 'https://mail.google.com/mail/?view=cm&to=adhityanuryana9@gmail.com';
+    emailLink.target = isMobile ? '_self' : '_blank';
+  </script>
+</body>
+</html>
