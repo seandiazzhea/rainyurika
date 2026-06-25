@@ -2,29 +2,28 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=1200" />
   <title>Portfolio — Rainy Bintang Yurika</title>
   
-  <!-- DOKUMENTASI: Font Lora untuk keanggunan klasik, DM Sans untuk keterbacaan modern -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 
   <style>
     /* ---------------------------------------------------
-       1. RESET & VARIABEL (Tema Natural & Boutique)
+       1. RESET & VARIABEL
        --------------------------------------------------- */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg-canvas: #faf9f6;     /* Putih tulang/krem hangat */
-      --bg-surface: #ffffff;    /* Putih murni untuk kartu */
+      --bg-canvas: #faf9f6;     
+      --bg-surface: #ffffff;    
       
-      --text-dark: #2c3e35;     /* Hijau hutan sangat gelap (sebagai pengganti hitam) */
-      --text-light: #6a7c73;    /* Hijau pucat untuk teks sekunder */
+      --text-dark: #2c3e35;     
+      --text-light: #6a7c73;    
       
-      --accent-warm: #d4a373;   /* Terakota/Emas hangat */
-      --accent-soft: #e9edc9;   /* Sage green sangat muda */
+      --accent-warm: #d4a373;   
+      --accent-soft: #e9edc9;   
       
       --font-serif: 'Lora', serif;
       --font-sans: 'DM Sans', sans-serif;
@@ -39,13 +38,13 @@
       background-color: var(--bg-canvas);
       color: var(--text-dark);
       overflow-x: hidden;
+      min-width: 1200px;
     }
 
     ::selection { background: var(--accent-warm); color: #fff; }
 
     /* ---------------------------------------------------
-       2. ANIMASI FLUIDA (KUNCI UTAMA DESAIN INI)
-       DOKUMENTASI: Keyframes untuk memanipulasi 8 titik sudut border-radius
+       2. ANIMASI FLUIDA
        --------------------------------------------------- */
     @keyframes morph {
       0% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
@@ -53,7 +52,6 @@
       100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
     }
 
-    /* Blob Dekoratif di Latar Belakang */
     .bg-blob {
       position: fixed; z-index: -1; opacity: 0.4;
       background: linear-gradient(135deg, var(--accent-soft), var(--bg-surface));
@@ -68,9 +66,10 @@
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       display: flex; align-items: center; justify-content: space-between;
-      padding: 1.5rem 4rem;
-      background: rgba(250, 249, 246, 0.8);
+      padding: 1rem 3rem;
+      background: rgba(250, 249, 246, 0.85);
       backdrop-filter: blur(10px);
+      min-width: 1200px;
     }
     .nav-logo { 
       font-family: var(--font-serif); font-size: 1.5rem; font-weight: 600; 
@@ -91,7 +90,7 @@
     .nav-links a:hover::after, .nav-links a.active::after { opacity: 1; }
 
     /* ---------------------------------------------------
-       4. TOMBOL (Soft Pills)
+       4. TOMBOL
        --------------------------------------------------- */
     .btn {
       display: inline-flex; align-items: center; justify-content: center;
@@ -114,30 +113,29 @@
        5. HERO SECTION
        --------------------------------------------------- */
     #hero {
-      min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; 
-      align-items: center; gap: 4rem; padding: 8rem 6rem 4rem;
+      min-height: 90vh; display: grid; grid-template-columns: 1fr 1fr; 
+      align-items: center; gap: 2rem; padding: 7rem 5rem 3rem;
       max-width: 1400px; margin: 0 auto;
     }
     
     .hero-text { position: relative; z-index: 2; }
     .hero-label { 
       font-family: var(--font-serif); font-size: 1.1rem; font-style: italic;
-      color: var(--accent-warm); margin-bottom: 1rem; display: block;
+      color: var(--accent-warm); margin-bottom: 0.8rem; display: block;
     }
     .hero-name { 
-      font-family: var(--font-serif); font-size: clamp(3.5rem, 5vw, 5rem); 
-      font-weight: 500; line-height: 1.1; margin-bottom: 1.5rem; color: var(--text-dark);
+      font-family: var(--font-serif); font-size: clamp(3rem, 4.5vw, 4.5rem); 
+      font-weight: 500; line-height: 1.1; margin-bottom: 1.2rem; color: var(--text-dark);
     }
     .hero-tagline { 
-      font-size: 1.1rem; color: var(--text-light); max-width: 500px; 
-      margin-bottom: 3rem; line-height: 1.8;
+      font-size: 1.05rem; color: var(--text-light); max-width: 500px; 
+      margin-bottom: 2.5rem; line-height: 1.8;
     }
     .hero-cta { display: flex; gap: 1rem; }
 
-    /* Bingkai Foto Fluida (Liquid Frame) */
     .hero-visual { display: flex; justify-content: center; position: relative; }
     .fluid-frame {
-      width: 400px; height: 400px; background: var(--accent-soft);
+      width: 360px; height: 360px; background: var(--accent-soft);
       animation: morph 8s ease-in-out infinite;
       padding: 10px; display: flex; align-items: center; justify-content: center;
       box-shadow: 0 20px 40px rgba(44, 62, 53, 0.08);
@@ -147,93 +145,92 @@
       background-color: var(--bg-surface); animation: morph 8s ease-in-out infinite reverse;
       display: flex; align-items: center; justify-content: center;
     }
-    .hero-photo img { width: 100%; height: 100%; object-fit: cover; display: none; position: absolute; top:0; left:0; transition: transform 0.5s ease; filter: contrast(1.05) saturate(0.9);}
+    .hero-photo img { width: 100%; height: 100%; object-fit: cover; display: block; position: absolute; top:0; left:0; transition: transform 0.5s ease; filter: contrast(1.05) saturate(0.9);}
     .hero-photo:hover img { transform: scale(1.05); filter: contrast(1) saturate(1);}
-    .photo-ph { font-family: var(--font-serif); font-style: italic; color: var(--text-light); pointer-events: none;}
 
     /* ---------------------------------------------------
        6. STRUKTUR SECTION UMUM
        --------------------------------------------------- */
-    section { padding: 8rem 4rem; max-width: 1100px; margin: 0 auto; position: relative; z-index: 2; }
-    .section-header { text-align: center; margin-bottom: 5rem; }
-    .section-label { font-size: 0.85rem; color: var(--accent-warm); font-weight: 700; text-transform: uppercase; letter-spacing: 2px; display: block; margin-bottom: 1rem;}
-    .section-title { font-family: var(--font-serif); font-size: 2.8rem; font-weight: 500; color: var(--text-dark); }
+    section { padding: 5rem 4rem; max-width: 1100px; margin: 0 auto; position: relative; z-index: 2; }
+    .section-header { text-align: center; margin-bottom: 2.5rem; }
+    .section-label { font-size: 0.85rem; color: var(--accent-warm); font-weight: 700; text-transform: uppercase; letter-spacing: 2px; display: block; margin-bottom: 0.5rem;}
+    .section-title { font-family: var(--font-serif); font-size: 2.5rem; font-weight: 500; color: var(--text-dark); }
 
     /* ---------------------------------------------------
-       7. ABOUT (Editorial Layout)
+       7. ABOUT
        --------------------------------------------------- */
-    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
-    .about-bio { font-size: 1.15rem; color: var(--text-light); line-height: 2; }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+    .about-bio { font-size: 1.1rem; color: var(--text-light); line-height: 1.8; }
     .about-bio strong { color: var(--text-dark); font-weight: 700; }
     
-    .stats-container { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: start;}
-    .stat-box { border-left: 2px solid var(--accent-warm); padding-left: 1.5rem; }
-    .stat-val { font-family: var(--font-serif); font-size: 2rem; font-weight: 500; color: var(--text-dark); margin-bottom: 0.2rem; display: block;}
-    .stat-lbl { font-size: 0.85rem; color: var(--text-light); text-transform: uppercase; letter-spacing: 1px; font-weight: 700; }
+    .stats-container { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; align-items: start;}
+    .stat-box { border-left: 2px solid var(--accent-warm); padding-left: 1rem; }
+    .stat-val { font-family: var(--font-serif); font-size: 1.8rem; font-weight: 500; color: var(--text-dark); margin-bottom: 0.2rem; display: block;}
+    .stat-lbl { font-size: 0.8rem; color: var(--text-light); text-transform: uppercase; letter-spacing: 1px; font-weight: 700; }
 
     /* ---------------------------------------------------
-       8. SKILLS (Soft Cards)
+       8. SKILLS
        --------------------------------------------------- */
-    .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 2rem; }
-    .skill-card { background: var(--bg-surface); padding: 3rem 2rem; border-radius: 20px; box-shadow: 0 10px 30px rgba(44, 62, 53, 0.03); transition: transform 0.3s;}
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; }
+    .skill-card { background: var(--bg-surface); padding: 2rem 1.5rem; border-radius: 16px; box-shadow: 0 10px 30px rgba(44, 62, 53, 0.03); transition: transform 0.3s;}
     .skill-card:hover { transform: translateY(-5px); }
-    .skill-icon { width: 50px; height: 50px; background: var(--accent-soft); border-radius: 50%; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: center; color: var(--text-dark); font-weight: 700;}
-    .skill-cat-title { font-family: var(--font-serif); font-size: 1.3rem; margin-bottom: 1rem; color: var(--text-dark); }
+    .skill-icon { width: 45px; height: 45px; background: var(--accent-soft); border-radius: 50%; margin-bottom: 1.2rem; display: flex; align-items: center; justify-content: center; color: var(--text-dark); font-weight: 700;}
+    .skill-cat-title { font-family: var(--font-serif); font-size: 1.2rem; margin-bottom: 0.8rem; color: var(--text-dark); }
     .skill-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
     .skill-tag { font-size: 0.85rem; color: var(--text-light); background: var(--bg-canvas); padding: 0.3rem 0.8rem; border-radius: 50px; }
 
     /* ---------------------------------------------------
-       9. PROJECTS (Alternating Fluid)
+       9. PROJECTS & EXPERIENCES
        --------------------------------------------------- */
-    .projects-list { display: flex; flex-direction: column; gap: 6rem; }
-    .project-item { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+    .projects-list { display: flex; flex-direction: column; gap: 3.5rem; }
+    .project-item { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
     .project-item:nth-child(even) { direction: rtl; } 
     .project-item:nth-child(even) > * { direction: ltr; }
     
-    .proj-info { padding: 1rem 0; }
-    .proj-name { font-family: var(--font-serif); font-size: 2.2rem; font-weight: 500; color: var(--text-dark); margin-bottom: 1rem; }
-    .proj-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; }
+    .proj-info { padding: 0.5rem 0; }
+    .proj-name { font-family: var(--font-serif); font-size: 2rem; font-weight: 500; color: var(--text-dark); margin-bottom: 0.8rem; }
+    .proj-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem; }
     .proj-tag { font-size: 0.75rem; font-weight: 700; color: var(--accent-warm); text-transform: uppercase; letter-spacing: 1px; }
-    .proj-desc { font-size: 1.05rem; color: var(--text-light); line-height: 1.8; }
+    .proj-desc { font-size: 1rem; color: var(--text-light); line-height: 1.7; }
     
-    .proj-visual { position: relative; width: 100%; max-width: 450px; margin: 0 auto;}
-    /* Bingkai pembungkus galeri proyek, juga diberi efek fluida */
+    .proj-visual { position: relative; width: 100%; max-width: 400px; margin: 0 auto;}
     .proj-frame { background: var(--bg-surface); padding: 1rem; border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; box-shadow: 0 15px 35px rgba(0,0,0,0.05); animation: morph 10s ease-in-out infinite alternate;}
     
     .proj-imgs { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; border-radius: 25% 65% 65% 25% / 25% 25% 65% 65%; overflow: hidden; animation: morph 10s ease-in-out infinite alternate-reverse;}
-    .proj-imgs .img-slot:first-child { grid-column: span 2; height: 200px; }
-    .img-slot { height: 120px; background: var(--bg-canvas); position: relative; overflow: hidden; cursor: pointer; }
-    .img-slot img { width: 100%; height: 100%; object-fit: cover; display: none; position: absolute; top:0; left:0; transition: transform 0.4s; }
-    .img-slot:hover img { transform: scale(1.05); }
-    .slot-ph { display: flex; align-items: center; justify-content: center; height: 100%; font-size: 0.8rem; color: var(--text-light); font-style: italic; pointer-events: none;}
+    .proj-imgs .img-slot:first-child { grid-column: span 2; height: 180px; }
+    .img-slot { height: 110px; background: var(--bg-canvas); position: relative; overflow: hidden; cursor: pointer; display: flex; align-items: center; justify-content: center;}
+    
+    /* Atribut untuk video agar terlihat sebagai thumbnail */
+    .img-slot img, .img-slot video { width: 100%; height: 100%; object-fit: cover; display: block; position: absolute; top:0; left:0; transition: transform 0.4s; }
+    .img-slot video { pointer-events: none; }
+    .img-slot:hover img, .img-slot:hover video { transform: scale(1.05); }
 
     /* ---------------------------------------------------
-       10. EXPERIENCE (Minimalist Stepper)
+       10. TIMELINE (Experience)
        --------------------------------------------------- */
     .exp-container { max-width: 800px; margin: 0 auto; }
-    .exp-item { display: grid; grid-template-columns: 180px 1fr; gap: 3rem; margin-bottom: 4rem; position: relative;}
+    .exp-item { display: grid; grid-template-columns: 160px 1fr; gap: 2rem; margin-bottom: 2rem; position: relative;}
     .exp-item:last-child { margin-bottom: 0; }
     
-    .exp-left { text-align: right; border-right: 1px solid rgba(44, 62, 53, 0.1); padding-right: 2rem; position: relative;}
-    /* Titik konektor */
+    .exp-left { text-align: right; border-right: 1px solid rgba(44, 62, 53, 0.1); padding-right: 1.5rem; position: relative;}
     .exp-left::after { content: ''; position: absolute; right: -5px; top: 5px; width: 9px; height: 9px; background: var(--accent-warm); border-radius: 50%; }
     
-    .exp-dates { font-size: 0.9rem; color: var(--text-light); font-weight: 700; letter-spacing: 1px; }
-    .exp-role { font-family: var(--font-serif); font-size: 1.6rem; font-weight: 500; color: var(--text-dark); margin-bottom: 0.3rem; }
-    .exp-org { font-size: 1rem; color: var(--accent-warm); font-weight: 600; margin-bottom: 1.5rem; display: block; }
-    .exp-desc { font-size: 1.05rem; color: var(--text-light); line-height: 1.8; }
+    .exp-dates { font-size: 0.85rem; color: var(--text-light); font-weight: 700; letter-spacing: 1px; }
+    .exp-role { font-family: var(--font-serif); font-size: 1.4rem; font-weight: 500; color: var(--text-dark); margin-bottom: 0.2rem; }
+    .exp-org { font-size: 0.95rem; color: var(--accent-warm); font-weight: 600; margin-bottom: 1rem; display: block; }
+    .exp-desc { font-size: 1rem; color: var(--text-light); line-height: 1.7; }
     
-    .exp-imgs { display: flex; gap: 15px; margin-top: 1.5rem; }
-    .exp-imgs .img-slot { height: 90px; width: 130px; border-radius: 12px; }
+    .exp-imgs { display: flex; gap: 10px; margin-top: 1rem; }
+    .exp-imgs .img-slot { height: 80px; width: 120px; border-radius: 8px; }
 
     /* ---------------------------------------------------
        11. CONTACT & FOOTER
        --------------------------------------------------- */
-    #contact { text-align: center; padding-bottom: 8rem; }
-    .contact-wrapper { padding: 5rem 3rem; background: var(--bg-surface); border-radius: 40px; box-shadow: 0 10px 40px rgba(0,0,0,0.03); max-width: 800px; margin: 0 auto;}
-    .contact-headline { font-family: var(--font-serif); font-size: 3rem; font-weight: 500; color: var(--text-dark); margin-bottom: 1rem; }
-    .contact-sub { font-size: 1.1rem; color: var(--text-light); margin-bottom: 3rem; }
-    .contact-links { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; }
+    #contact { text-align: center; padding-bottom: 4rem; }
+    .contact-wrapper { padding: 4rem 2.5rem; background: var(--bg-surface); border-radius: 30px; box-shadow: 0 10px 40px rgba(0,0,0,0.03); max-width: 800px; margin: 0 auto;}
+    .contact-headline { font-family: var(--font-serif); font-size: 2.5rem; font-weight: 500; color: var(--text-dark); margin-bottom: 1rem; }
+    .contact-sub { font-size: 1.05rem; color: var(--text-light); margin-bottom: 2.5rem; max-width: 600px; margin-left: auto; margin-right: auto;}
+    .contact-links { display: flex; justify-content: center; gap: 1.2rem; flex-wrap: wrap; }
 
     footer { text-align: center; padding: 2rem; font-size: 0.85rem; color: var(--text-light); border-top: 1px solid rgba(44, 62, 53, 0.05); }
 
@@ -245,36 +242,22 @@
 
     .lightbox { display: flex; position: fixed; inset: 0; background: rgba(250, 249, 246, 0.95); z-index: 9999; align-items: center; justify-content: center; cursor: zoom-out; pointer-events: none; opacity: 0; transition: all 0.3s ease; }
     .lightbox.active { opacity: 1; pointer-events: all; }
-    .lightbox img { max-width: 85vw; max-height: 85vh; object-fit: contain; border-radius: 16px; box-shadow: 0 20px 50px rgba(0,0,0,0.1); transform: scale(0.95); transition: transform 0.3s ease; }
-    .lightbox.active img { transform: scale(1); }
+    .lightbox img, .lightbox video { max-width: 85vw; max-height: 85vh; object-fit: contain; border-radius: 16px; box-shadow: 0 20px 50px rgba(0,0,0,0.1); transform: scale(0.95); transition: transform 0.3s ease; outline: none; background: #000; }
+    .lightbox.active img, .lightbox.active video { transform: scale(1); }
+  
+.view-project-link{
+  margin-top:16px;
+  font-weight:700;
+}
+.drive-image-link{
+  text-decoration:none;
+  color:inherit;
+}
+.drive-image-link img{
+  cursor:pointer;
+}
 
-    /* ---------------------------------------------------
-       13. RESPONSIVE (Layar Handphone)
-       --------------------------------------------------- */
-    @media (max-width: 992px) {
-      nav { padding: 1.2rem 2rem; justify-content: center; }
-      .nav-links { display: none; }
-      
-      #hero { grid-template-columns: 1fr; padding: 8rem 2rem 4rem; text-align: center; gap: 3rem; }
-      .hero-name { font-size: 3rem; }
-      .hero-tagline { margin: 0 auto 2.5rem; }
-      .hero-cta { justify-content: center; flex-direction: column; }
-      .fluid-frame { width: 300px; height: 300px; margin: 0 auto; }
-      
-      section { padding: 4rem 1.5rem; }
-      .about-grid, .project-item { grid-template-columns: 1fr; gap: 3rem; }
-      .project-item:nth-child(even) { direction: ltr; }
-      
-      .exp-item { grid-template-columns: 1fr; gap: 1rem; }
-      .exp-left { text-align: left; border-right: none; padding-right: 0; border-bottom: 1px solid rgba(44, 62, 53, 0.1); padding-bottom: 1rem; margin-bottom: 1rem;}
-      .exp-left::after { display: none; }
-      .exp-imgs { flex-wrap: wrap; }
-      .exp-imgs .img-slot { width: 100%; height: 180px; }
-      
-      .contact-wrapper { padding: 3rem 1.5rem; border-radius: 24px; }
-      .contact-links { flex-direction: column; }
-    }
-  </style>
+</style>
 </head>
 <body>
 
@@ -282,29 +265,13 @@
   <div class="bg-blob blob-1"></div>
   <div class="bg-blob blob-2"></div>
 
-  <!-- Input File Tersembunyi (Anti-bug fungsionalitas) -->
-  <input type="file" id="fi-hero" accept="image/*" style="display:none" />
-  <input type="file" id="fi-p1-1" accept="image/*" style="display:none" />
-  <input type="file" id="fi-p1-2" accept="image/*" style="display:none" />
-  <input type="file" id="fi-p1-3" accept="image/*" style="display:none" />
-  <input type="file" id="fi-p2-1" accept="image/*" style="display:none" />
-  <input type="file" id="fi-p2-2" accept="image/*" style="display:none" />
-  <input type="file" id="fi-p2-3" accept="image/*" style="display:none" />
-  <input type="file" id="fi-e1-1" accept="image/*" style="display:none" />
-  <input type="file" id="fi-e1-2" accept="image/*" style="display:none" />
-  <input type="file" id="fi-e1-3" accept="image/*" style="display:none" />
-  <input type="file" id="fi-e2-1" accept="image/*" style="display:none" />
-  <input type="file" id="fi-e2-2" accept="image/*" style="display:none" />
-  <input type="file" id="fi-e2-3" accept="image/*" style="display:none" />
-  <input type="file" id="fi-e2-4" accept="image/*" style="display:none" />
-
   <nav class="fade-in">
     <a href="#hero" class="nav-logo">Rainy.</a>
     <ul class="nav-links">
       <li><a href="#about" class="nav-link">About</a></li>
       <li><a href="#skills" class="nav-link">Skill</a></li>
-      <li><a href="#projects" class="nav-link">Experience</a></li>
-      <li><a href="#experience" class="nav-link">Career</a></li>
+      <li><a href="#hospitality-exp" class="nav-link">Experience</a></li>
+      <li><a href="#modeling-exp" class="nav-link">Career</a></li>
     </ul>
   </nav>
 
@@ -316,14 +283,14 @@
         Passionate about hospitality service with hands-on training in Front Office, Housekeeping, and Food & Beverage operations. Interested in guest service excellence and luxury hotel experience.
       </p>
       <div class="hero-cta">
-        <a href="#projects" class="btn btn-primary">View Portfolio</a>
+        <a href="#hospitality-exp" class="btn btn-primary">View Portfolio</a>
         <a href="#contact" class="btn btn-outline">Let's Connect</a>
       </div>
     </div>
     <div class="hero-visual fade-in">
       <div class="fluid-frame">
         <div class="hero-photo" id="hero-photo-el">
-          <div class="photo-ph" id="hero-ph" style="display:none;">Upload</div>
+          <!-- Ganti dengan path foto hero lu -->
           <img id="hero-img" src="ava.jpg" alt="Foto profil" style="display:block;" />
         </div>
       </div>
@@ -338,7 +305,7 @@
     <div class="about-grid fade-in">
       <div class="about-bio">
         <p>Hello, I am <strong>Rainy Bintang Yurika</strong>, I am currently a student at Universitas Terbuka, majoring in English Literature.</p><br>
-        <p> I am passionate about the hospitality industry with hands-on experience in Front Office, Food & Beverage service, and housekeeping training. I also have a background in content creation and visual communication.</p><br>
+        <p> I am passionate about the hospitality industry with hands-on experience in Front Office, Food & Beverage service, and housekeeping training. I also have a background in content creation and visual communication.</p>
       </div>
       <div class="stats-container">
         <div class="stat-box">
@@ -346,7 +313,7 @@
           <span class="stat-lbl">Languages</span>
         </div>
         <div class="stat-box">
-          <span class="stat-val">Front Office & FNB</span>
+          <span class="stat-val">F.O & FNB</span>
           <span class="stat-lbl">Career Path</span>
         </div>
         <div class="stat-box">
@@ -381,10 +348,9 @@
         <h3 class="skill-cat-title">Hospitality</h3>
         <div class="skill-tags">
           <span class="skill-tag">Guest Assistance</span>
-          <span class="skill-tag">Front Office Basic Operations</span>
-          <span class="skill-tag">Food & Beverage Service</span>
-           <span class="skill-tag">Housekeeping Operations</span>
-          <span class="skill-tag">Customer Handling & Serving Attitude</span>
+          <span class="skill-tag">Front Office Operations</span>
+          <span class="skill-tag">F&B Service</span>
+          <span class="skill-tag">Housekeeping</span>
         </div>
       </div>
       <div class="skill-card">
@@ -394,7 +360,7 @@
           <span class="skill-tag">Communication</span>
           <span class="skill-tag">Problem Handling</span>
           <span class="skill-tag">Adaptability</span>
-          <span class="skill-tag">Confidence in Public Interaction</span>
+          <span class="skill-tag">Public Interaction</span>
         </div>
       </div>
       <div class="skill-card">
@@ -403,14 +369,15 @@
         <div class="skill-tags">
           <span class="skill-tag">Adobe Family</span>
           <span class="skill-tag">CapCut & Canva</span>
-          <span class="skill-tag">Content Creation & Content Writing</span>
+          <span class="skill-tag">Content Creation</span>
           <span class="skill-tag">Microsoft Office</span>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="projects">
+  <!-- BAGIAN 1 PROYEK: Hospitality -->
+  <section id="hospitality-exp">
     <div class="section-header fade-in">
       <span class="section-label">03. Work Experience</span>
       <h2 class="section-title">Hospitality Experience</h2>
@@ -418,7 +385,6 @@
     
     <div class="projects-list">
 
-      <!-- Project 1 -->
       <div class="project-item fade-in">
         <div class="proj-info">
           <h3 class="proj-name">Hospitality Trainee PPKD</h3>
@@ -427,55 +393,56 @@
             <span class="proj-tag"> | </span>
             <span class="proj-tag">April 2026 - July 2026</span>
           </div>
-          <p class="proj-desc">Trained in Housekeeping operations including bedding SOP, room cleaning procedures, and room status understanding, learned Food & Beverage service including banquet-style guest service, gained basic knowledge of Front Office operations and guest service standards, & developed teamwork, discipline, and hospitality communication skills in hotel environment.</p>
+          <p class="proj-desc">Trained in Housekeeping operations including bedding SOP, room cleaning procedures, and room status understanding, learned Food & Beverage service including banquet-style guest service, gained basic knowledge of Front Office operations and guest service standards.</p>
         </div>
         <div class="proj-visual">
           <div class="proj-frame" style="animation-direction: alternate-reverse;">
             <div class="proj-imgs" style="animation-direction: alternate;">
-              <div class="img-slot" data-fi="fi-p2-1"><img src="ppkd1.jpeg" style="display:block;" /><div class="slot-ph">Img 1</div></div>
-              <div class="img-slot" data-fi="fi-p2-2"><img src="ppkd2.jpeg" style="display:block;" /><div class="slot-ph">Img 2</div></div>
-              <div class="img-slot" data-fi="fi-p2-3"><img src="ppkd3.jpeg" style="display:block;" /><div class="slot-ph">Img 3</div></div>
-              <div class="img-slot" data-fi="fi-p2-1"><img src="ppkd4.jpeg" style="display:block;" /><div class="slot-ph">Img 1</div></div>
-              <div class="img-slot" data-fi="fi-p2-2"><img src="ppkd5.jpeg" style="display:block;" /><div class="slot-ph">Img 2</div></div>
-              <div class="img-slot" data-fi="fi-p2-3"><img src="ppkd6.jpeg" style="display:block;" /><div class="slot-ph">Img 3</div></div>
-              <div class="img-slot" data-fi="fi-p2-3"><img src="ppkd7.jpeg" style="display:block;" /><div class="slot-ph">Img 3</div></div>
+              <div class="img-slot"><img src="ppkd1.jpeg" style="display:block;" /></div>
+              <div class="img-slot"><img src="ppkd2.jpeg" style="display:block;" /></div>
+              <div class="img-slot"><img src="ppkd3.jpeg" style="display:block;" /></div>
+              <div class="img-slot"><img src="ppkd4.jpeg" style="display:block;" /></div>
+              <div class="img-slot"><img src="ppkd5.jpeg" style="display:block;" /></div>
+              <div class="img-slot"><img src="ppkd6.jpeg" style="display:block;" /></div>
+              <div class="img-slot"><img src="ppkd7.jpeg" style="display:block;" /></div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Project 2 -->
       <div class="project-item fade-in">
         <div class="proj-info">
-          <h3 class="proj-name">Banquet Staff</h3>
+          <h3 class="proj-name">Banquet Part-Time</h3>
           <div class="proj-tags">
             <span class="proj-tag">Swissôtel Jakarta PIK</span>
             <span class="proj-tag">|</span>
             <span class="proj-tag">June 2026</span>
           </div>
-          <p class="proj-desc">Assisted in banquet service for standing event operations, handled guest food service and cleared used cutlery and glassware, maintained service flow in fast-paced hospitality environment during long-hour event operations & worked in coordination with F&B team to ensure smooth guest experience.</p>
+          <p class="proj-desc">Assisted in banquet service for standing event operations, handled guest food service and cleared used cutlery and glassware, maintained service flow in fast-paced hospitality environment during long-hour event operations.</p>
         </div>
         <div class="proj-visual">
           <div class="proj-frame">
             <div class="proj-imgs">
-              <div class="img-slot" data-fi="fi-p1-1"><img src="banquet2.jpeg" style="display:block;" /><div class="slot-ph">Img 1</div></div>
-              <div class="img-slot" data-fi="fi-p1-2"><img src="banquet1.jpeg" style="display:block;" /><div class="slot-ph">Img 2</div></div>
-              <div class="img-slot" data-fi="fi-p1-3"><img src="banquet3.jpeg" style="display:block;" /><div class="slot-ph">Img 3</div></div>
-              <div class="img-slot" data-fi="fi-p1-4"><img src="banquet4.jpeg" style="display:block;" /><div class="slot-ph">Img 4</div></div>
-              <div class="img-slot" data-fi="fi-p1-5"><img src="banquet5.jpeg" style="display:block;" /><div class="slot-ph">Img 5</div></div>
+              <div class="img-slot"><img src="banquet2.jpeg" style="display:block;" /></div>
+              <div class="img-slot"><img src="banquet1.jpeg" style="display:block;" /></div>
+              <div class="img-slot"><img src="banquet3.jpeg" style="display:block;" /></div>
+              <div class="img-slot"><img src="banquet4.jpeg" style="display:block;" /></div>
+              <div class="img-slot"><img src="banquet5.jpeg" style="display:block;" /></div>
             </div>
           </div>
         </div>
       </div>
+    </div>
+  </section>
 
-  <section id="projects">
+  <!-- BAGIAN 2 PROYEK: Content Creation -->
+  <section id="content-creation">
     <div class="section-header fade-in">
       <h2 class="section-title">Content Creation Experience</h2>
     </div>
     
     <div class="projects-list">
       
-      <!-- Project 1 -->
       <div class="project-item fade-in">
         <div class="proj-info">
           <h3 class="proj-name">OH!Some Freelance</h3>
@@ -489,15 +456,27 @@
         <div class="proj-visual">
           <div class="proj-frame">
             <div class="proj-imgs">
-              <div class="img-slot" data-fi="fi-p1-1"><img src="konten1.mp4" style="display:block;" /><div class="slot-ph">Img 1</div></div>
-              <div class="img-slot" data-fi="fi-p1-2"><img src="konten2.mp4" style="display:block;" /><div class="slot-ph">Img 2</div></div>
-              <div class="img-slot" data-fi="fi-p1-3"><img src="konten3.mp4" style="display:block;" /><div class="slot-ph">Img 3</div></div>
+              <!-- DOKUMENTASI: Ini adalah tag Video yang bisa diklik untuk dimainkan di Lightbox -->
+              <div class="img-slot">
+                <video src="konten1.mp4" style="display:block;" preload="metadata"></video>
+              </div>
+              <div class="img-slot">
+                <video src="konten2.mp4" style="display:block;" preload="metadata"></video>
+              </div>
+              <div class="img-slot">
+                <video src="konten3.mp4" style="display:block;" preload="metadata"></video>
+              </div>
+              <div class="img-slot">
+                <video src="konten4.mp4" style="display:block;" preload="metadata"></video>
+              </div>
+              <div class="img-slot">
+                <video src="konten5.mp4" style="display:block;" preload="metadata"></video>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Project 2 -->
       <div class="project-item fade-in">
         <div class="proj-info">
           <h3 class="proj-name">Millenialz Kece</h3>
@@ -507,39 +486,23 @@
             <span class="proj-tag">Mar 2025 - Jun 2025</span>
           </div>
           <p class="proj-desc">Edited educational TikTok videos using CapCut and Canva, managed video sequencing, transitions, and audio synchronization, & organized and processed raw footage into structured short-form content.</p>
+          <div class="view-project-link"></div>
         </div>
         <div class="proj-visual">
           <div class="proj-frame">
             <div class="proj-imgs">
-              <div class="img-slot" data-fi="fi-p1-1"><img src="ssrpoyek1.png" style="display:block;" /><div class="slot-ph">Img 1</div></div>
-              <div class="img-slot" data-fi="fi-p1-2"><img src="ssproyek2.png" style="display:block;" /><div class="slot-ph">Img 2</div></div>
-              <div class="img-slot" data-fi="fi-p1-3"><img src="ssproyek3.png" style="display:block;" /><div class="slot-ph">Img 3</div></div>
+              <a href="https://www.tiktok.com/@millenialzkece/video/7502856875319299346?is_from_webapp=1&sender_device=pc" target="_blank" rel="noopener noreferrer" class="img-slot drive-image-link" aria-label="Open Millenialz Kece portfolio on Google Drive">
+                <img src="edukatif1.jpeg" style="display:block;" />
+              <a href="https://www.tiktok.com/@millenialzkece/video/7503588289853639954?is_from_webapp=1&sender_device=pc" target="_blank" rel="noopener noreferrer" class="img-slot drive-image-link" aria-label="Open Millenialz Kece portfolio on Google Drive">
+                <img src="edukatif2.jpeg" style="display:block;" />
+              <a href="https://www.tiktok.com/@millenialzkece/video/7490175021801803016?is_from_webapp=1&sender_device=pc" target="_blank" rel="noopener noreferrer" class="img-slot drive-image-link" aria-label="Open Millenialz Kece portfolio on Google Drive">
+                <img src="edukatif3.png" style="display:block;" />
+              </a>
             </div>
           </div>
         </div>
       </div>
-      <!-- Project 3 -->
-      <div class="project-item fade-in">
-        <div class="proj-info">
-          <h3 class="proj-name">Photo Editor Intern</h3>
-          <div class="proj-tags">
-            <span class="proj-tag">PT. Dropicts</span>
-            <span class="proj-tag">|</span>
-            <span class="proj-tag">Nov 2023 - Apr 2024</span>
-          </div>
-          <p class="proj-desc">Edited product and model photos using Adobe Photoshop, managed digital files, spreadsheets, and workflow system (Odoo), & applied visual enhancement techniques for commercial product presentation.</p>
-        </div>
-        <div class="proj-visual">
-          <div class="proj-frame">
-            <div class="proj-imgs">
-              <div class="img-slot" data-fi="fi-p1-1"><img src="ssrpoyek1.png" style="display:block;" /><div class="slot-ph">Img 1</div></div>
-              <div class="img-slot" data-fi="fi-p1-2"><img src="ssproyek2.png" style="display:block;" /><div class="slot-ph">Img 2</div></div>
-              <div class="img-slot" data-fi="fi-p1-3"><img src="ssproyek3.png" style="display:block;" /><div class="slot-ph">Img 3</div></div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Project 4 -->
+
       <div class="project-item fade-in">
         <div class="proj-info">
           <h3 class="proj-name">Content Writer</h3>
@@ -548,179 +511,155 @@
             <span class="proj-tag">|</span>
             <span class="proj-tag">2025 - Present</span>
           </div>
-          <p class="proj-desc">Wrote and published website articles using assigned access platform, produced content with strong audience engagement, achieving up to 499,500 views on a single article/post, developed content writing, storytelling, and audience communication skills, & collaborated in managing and updating digital content</p>
+          <p class="proj-desc">Wrote and published website articles using assigned access platform, produced content with strong audience engagement, achieving up to 499,500 views on a single article/post.</p>
+          <div class="view-project-link"></div>
         </div>
         <div class="proj-visual">
           <div class="proj-frame">
             <div class="proj-imgs">
-              <div class="img-slot" data-fi="fi-p1-1"><img src="ssrpoyek1.png" style="display:block;" /><div class="slot-ph">Img 1</div></div>
-              <div class="img-slot" data-fi="fi-p1-2"><img src="ssproyek2.png" style="display:block;" /><div class="slot-ph">Img 2</div></div>
-              <div class="img-slot" data-fi="fi-p1-3"><img src="ssproyek3.png" style="display:block;" /><div class="slot-ph">Img 3</div></div>             
+              <a href="https://viralterkini.id/archaeopteryx-burung-pertama-di-dunia-ternyata-masih-mirip-dinosaurus-lho/" target="_blank" rel="noopener noreferrer" class="img-slot drive-image-link" aria-label="Open Millenialz Kece portfolio on Google Drive">
+                <img src="artikel1.png" style="display:block;" />
+              <a href="https://viralterkini.id/ngopi-tanpa-rasa-bersalah-apa-dampak-kopi-ke-lingkungan/" target="_blank" rel="noopener noreferrer" class="img-slot drive-image-link" aria-label="Open Millenialz Kece portfolio on Google Drive">
+                <img src="artikel2.png" style="display:block;" />
+              <a href="https://viralterkini.id/saat-stres-jadilah-singa-bukan-gazel/" target="_blank" rel="noopener noreferrer" class="img-slot drive-image-link" aria-label="Open Millenialz Kece portfolio on Google Drive">
+                <img src="artikel3.png" style="display:block;" />
+              <a href="https://viralterkini.id/lengan-ajaib-gurita-jantan-bisa-kawin-meski-gelap-gulita/" target="_blank" rel="noopener noreferrer" class="img-slot drive-image-link" aria-label="Open Millenialz Kece portfolio on Google Drive">
+                <img src="artikel4.png" style="display:block;" />
+              <a href="https://viralterkini.id/selalu-tidur-8-jam-tapi-bangun-tidur-tetap-capek-ini-penjelasannya/" target="_blank" rel="noopener noreferrer" class="img-slot drive-image-link" aria-label="Open Millenialz Kece portfolio on Google Drive">
+                <img src="artikel5.png" style="display:block;" />
+              </a>
             </div>
           </div>
         </div>
-      </div>      
-    </div>
+      </div>  
   </section>
 
-  <section id="experience">
+  <!-- BAGIAN TIMELINE 1: Modeling -->
+  <section id="modeling-exp">
     <div class="section-header fade-in">
       <span class="section-label">04. Career Timeline</span>
-      <h2 class="section-title">Modeling & Creative Collaboration</h2>
+      <h2 class="section-title">Modeling & Collaboration</h2>
     </div>
     
     <div class="exp-container">
-     <!-- Experience 1 -->
       <div class="exp-item fade-in">
         <div class="exp-left">
-          <span class="exp-dates">Jul 13, 2025<br>Tangcity Mall<br>Wardrobe @afdi.sign for @acara_indonesia</span>
+          <span class="exp-dates">Jul 13, 2025<br>Tangcity Mall</span>
         </div>
         <div class="exp-right">
-          <h3 class="exp-role">Tangcity Newbie Model Hunt 2025</h3>
-          <span class="exp-org">Fashion event appearance, Indonesia Fashion showcase preparation.</span>
+          <h3 class="exp-role">Tangcity Newbie Model Hunt</h3>
+          <span class="exp-org">Fashion event appearance</span>
           <div class="exp-imgs">
-            <div class="img-slot" style="background:#fff; overflow:hidden; position:relative; cursor:pointer; border-radius:8px;" data-fi="fi-e2-1"><img src="tangcity1.jpeg" style="display:block; width:100%; height:100%; object-fit:cover;" /></div>
-            <div class="img-slot" style="background:#fff; overflow:hidden; position:relative; cursor:pointer; border-radius:8px;" data-fi="fi-e2-4"><img src="tangcity2.jpg" style="display:block; width:100%; height:100%; object-fit:cover;" /></div>
-            <div class="img-slot" style="background:#fff; overflow:hidden; position:relative; cursor:pointer; border-radius:8px;" data-fi="fi-e2-4"><img src="tangcity3.jpg" style="display:block; width:100%; height:100%; object-fit:cover;" /></div>   
-            <div class="img-slot" style="background:#fff; overflow:hidden; position:relative; cursor:pointer; border-radius:8px;" data-fi="fi-e2-4"><img src="tangcity4.jpeg" style="display:block; width:100%; height:100%; object-fit:cover;" /></div> 
+            <div class="img-slot"><img src="tangcity1.jpeg" style="display:block;" /></div>
+            <div class="img-slot"><img src="tangcity2.jpg" style="display:block;" /></div>
+            <div class="img-slot"><img src="tangcity3.jpg" style="display:block;" /></div>   
           </div>
         </div>
       </div>
 
-      <!-- Experience 2 -->
       <div class="exp-item fade-in">
         <div class="exp-left">
-          <span class="exp-dates">Jun 24, 2025<br>Polimedia Kreatif<br>For @hanamrdh_ Makeup @griyayunisalon Hairdo @salon.kartini</span>
+          <span class="exp-dates">Jun 24, 2025<br>Polimedia Kreatif</span>
         </div>
         <div class="exp-right">
-          <h3 class="exp-role">Final Project Fashion Show (Polimedia)</h3>
-          <span class="exp-org">Concept: cassava skin material exploration in fashion design.</span>
+          <h3 class="exp-role">Fashion Show (Polimedia)</h3>
+          <span class="exp-org">Concept: cassava skin material exploration.</span>
           <div class="exp-imgs">
-            <div class="img-slot" style="background:#fff; overflow:hidden; position:relative; cursor:pointer; border-radius:8px;" data-fi="fi-e2-1"><img src="polimedia1.jpg" style="display:block; width:100%; height:100%; object-fit:cover;" /></div>
-            <div class="img-slot" style="background:#fff; overflow:hidden; position:relative; cursor:pointer; border-radius:8px;" data-fi="fi-e2-2"><img src="polimedia2.jpg" style="display:block; width:100%; height:100%; object-fit:cover;" /></div>
-            <div class="img-slot" style="background:#fff; overflow:hidden; position:relative; cursor:pointer; border-radius:8px;" data-fi="fi-e2-3"><img src="polimedia3.jpg" style="display:block; width:100%; height:100%; object-fit:cover;" /></div>
-            <div class="img-slot" style="background:#fff; overflow:hidden; position:relative; cursor:pointer; border-radius:8px;" data-fi="fi-e2-4"><img src="polimedia4.jpg" style="display:block; width:100%; height:100%; object-fit:cover;" /></div>
+            <div class="img-slot"><img src="polimedia1.jpg" style="display:block;" /></div>
+            <div class="img-slot"><img src="polimedia2.jpg" style="display:block;" /></div>
+            <div class="img-slot"><img src="polimedia3.jpg" style="display:block;" /></div>
           </div>
         </div>
       </div>
 
-      <!-- Experience 3 -->
       <div class="exp-item fade-in">
         <div class="exp-left">
-          <span class="exp-dates">Jun 10, 2025<br>West Jakarta<br>Makeup & Hairdo @makeupbypenh</span>
+          <span class="exp-dates">Jun 10, 2025<br>West Jakarta</span>
         </div>
         <div class="exp-right">
-          <h3 class="exp-role">Tantria Wedding Project (Javanese Traditional Theme)</h3>
+          <h3 class="exp-role">Tantria Wedding Project</h3>
           <span class="exp-org">Bridal cultural fashion collaboration.</span>
           <div class="exp-imgs">
-            <div class="img-slot" style="background:#fff; overflow:hidden; position:relative; cursor:pointer; border-radius:8px;" data-fi="fi-e2-1"><img src="jawa1.jpg" style="display:block; width:100%; height:100%; object-fit:cover;" /></div>
-            <div class="img-slot" style="background:#fff; overflow:hidden; position:relative; cursor:pointer; border-radius:8px;" data-fi="fi-e2-2"><img src="jawa2.jpg" style="display:block; width:100%; height:100%; object-fit:cover;" /></div>
-            <div class="img-slot" style="background:#fff; overflow:hidden; position:relative; cursor:pointer; border-radius:8px;" data-fi="fi-e2-3"><img src="jawa3.jpg" style="display:block; width:100%; height:100%; object-fit:cover;" /></div>
-            <div class="img-slot" style="background:#fff; overflow:hidden; position:relative; cursor:pointer; border-radius:8px;" data-fi="fi-e2-4"><img src="jawa4.jpg" style="display:block; width:100%; height:100%; object-fit:cover;" /></div>
-            <div class="img-slot" style="background:#fff; overflow:hidden; position:relative; cursor:pointer; border-radius:8px;" data-fi="fi-e2-5"><img src="jawa5.jpg" style="display:block; width:100%; height:100%; object-fit:cover;" /></div>
+            <div class="img-slot"><img src="jawa1.jpg" style="display:block;" /></div>
+            <div class="img-slot"><img src="jawa2.jpg" style="display:block;" /></div>
+            <div class="img-slot"><img src="jawa3.jpg" style="display:block;" /></div>
           </div>
         </div>
       </div>
 
-      <!-- Experience 4 -->
       <div class="exp-item fade-in">
         <div class="exp-left">
-          <span class="exp-dates">May 25, 2025<br>Bassura Mall<br>For @heraproject.id</span>
+          <span class="exp-dates">May 25, 2025<br>Bassura Mall</span>
         </div>
         <div class="exp-right">
-          <h3 class="exp-role">Fashion Show Competition - Hera Project</h3>
-          <span class="exp-org">Participated in monochrome-themed fashion show competition organized by heraproject.id.</span>
+          <h3 class="exp-role">Fashion Show - Hera Project</h3>
+          <span class="exp-org">Monochrome-themed fashion show.</span>
           <div class="exp-imgs">
-            <div class="img-slot" style="background:#fff; overflow:hidden; position:relative; cursor:pointer; border-radius:8px;" data-fi="fi-e2-1"><img src="bnw1.jpeg" style="display:block; width:100%; height:100%; object-fit:cover;" /></div>
-            <div class="img-slot" style="background:#fff; overflow:hidden; position:relative; cursor:pointer; border-radius:8px;" data-fi="fi-e2-2"><img src="bnw2.jpg" style="display:block; width:100%; height:100%; object-fit:cover;" /></div>
-            <div class="img-slot" style="background:#fff; overflow:hidden; position:relative; cursor:pointer; border-radius:8px;" data-fi="fi-e2-3"><img src="bnw3.jpg" style="display:block; width:100%; height:100%; object-fit:cover;" /></div>
-            <div class="img-slot" style="background:#fff; overflow:hidden; position:relative; cursor:pointer; border-radius:8px;" data-fi="fi-e2-4"><img src="bnw4.jpeg" style="display:block; width:100%; height:100%; object-fit:cover;" /></div>
+            <div class="img-slot"><img src="bnw1.jpeg" style="display:block;" /></div>
+            <div class="img-slot"><img src="bnw2.jpg" style="display:block;" /></div>
+            <div class="img-slot"><img src="bnw3.jpg" style="display:block;" /></div>
           </div>
         </div>
       </div>
       
-      <!-- Experience 5 -->
       <div class="exp-item fade-in">
         <div class="exp-left">
-          <span class="exp-dates">May 2, 2025<br>Summarecon Mall Kelapa Gading</span>
+          <span class="exp-dates">Apr 29, 2025<br>Margo City Mall</span>
         </div>
         <div class="exp-right">
-          <h3 class="exp-role">JF3 Model Search</h3>
-          <span class="exp-org">Participated in JF3 Model Search, a fashion talent scouting and modeling event.</span>
-          <div class="exp-imgs">
-            <div class="img-slot" style="background:#fff; overflow:hidden; position:relative; cursor:pointer; border-radius:8px;" data-fi="fi-e2-1"><img src="jf31.jpeg" style="display:block; width:100%; height:100%; object-fit:cover;" /></div>
-            <div class="img-slot" style="background:#fff; overflow:hidden; position:relative; cursor:pointer; border-radius:8px;" data-fi="fi-e2-2"><img src="jf32.jpeg" style="display:block; width:100%; height:100%; object-fit:cover;" /></div>
-            <div class="img-slot" style="background:#fff; overflow:hidden; position:relative; cursor:pointer; border-radius:8px;" data-fi="fi-e2-3"><img src="jf33.jpeg" style="display:block; width:100%; height:100%; object-fit:cover;" /></div>
-            <div class="img-slot" style="background:#fff; overflow:hidden; position:relative; cursor:pointer; border-radius:8px;" data-fi="fi-e2-4"><img src="jf34.jpeg" style="display:block; width:100%; height:100%; object-fit:cover;" /></div>
-          </div>
-        </div>
-      </div>
-      
-      <!-- Experience 6 -->
-      <div class="exp-item fade-in">
-        <div class="exp-left">
-          <span class="exp-dates">Apr 29, 2025<br>Margo City Mall<br>Makeup & Hairdo @byichanafisha</span>
-        </div>
-        <div class="exp-right">
-          <h3 class="exp-role">Pony Makeup Look (Dubai Fashion Week Inspired)</h3>
+          <h3 class="exp-role">Pony Makeup Look</h3>
           <span class="exp-org">MUA Battle; Makeup & styling collaboration.</span>
           <div class="exp-imgs">
-            <div class="img-slot" style="background:#fff; overflow:hidden; position:relative; cursor:pointer; border-radius:8px;" data-fi="fi-e1-1"><img src="look1.jpeg" style="display:block; width:100%; height:100%; object-fit:cover;" /></div>
-            <div class="img-slot" style="background:#fff; overflow:hidden; position:relative; cursor:pointer; border-radius:8px;" data-fi="fi-e1-2"><img src="look2.jpeg" style="display:block; width:100%; height:100%; object-fit:cover;" /></div>
-            <div class="img-slot" style="background:#fff; overflow:hidden; position:relative; cursor:pointer; border-radius:8px;" data-fi="fi-e1-3"><img src="look4.jpeg" style="display:block; width:100%; height:100%; object-fit:cover;" /></div>
+            <div class="img-slot"><img src="look1.jpeg" style="display:block;" /></div>
+            <div class="img-slot"><img src="look2.jpeg" style="display:block;" /></div>
+            <div class="img-slot"><img src="look4.jpeg" style="display:block;" /></div>
+          </div>
         </div>
       </div>
+    </div>
+  </section>
 
-  <section id="experience">
+  <!-- BAGIAN TIMELINE 2: Leadership -->
+  <section id="leadership">
     <div class="section-header fade-in">
       <span class="section-label">05. Leadership Experience</span>
-      <h2 class="section-title">Organizational & Leadership Roles</h2>
+      <h2 class="section-title">Organizational Roles</h2>
     </div>
-
+    
     <div class="exp-container">
-      
-      <!-- Experience 1 -->
       <div class="exp-item fade-in">
         <div class="exp-left">
           <span class="exp-dates">Feb 2026 - Present<br>Universitas Terbuka</span>
         </div>
         <div class="exp-right">
-          <h3 class="exp-role">Human Resources Committee – English Club Batch 1</h3>
-          <span class="exp-org">Assisted in member coordination and internal communication, supported recruitment and organizational administration tasks, contributed to building structured workflow for new club batch & developed teamwork, communication, and organizational skills.</span>
+          <h3 class="exp-role">HR Committee – English Club</h3>
+          <span class="exp-org">Assisted in member coordination.</span>
           <div class="exp-imgs">
-            <div class="img-slot" style="background:#fff; overflow:hidden; position:relative; cursor:pointer; border-radius:8px;" data-fi="fi-e1-1"><img src="utec1.jpeg" style="display:block; width:100%; height:100%; object-fit:cover;" /></div>
-            <div class="img-slot" style="background:#fff; overflow:hidden; position:relative; cursor:pointer; border-radius:8px;" data-fi="fi-e1-2"><img src="utec2.jpeg" style="display:block; width:100%; height:100%; object-fit:cover;" /></div>
-            <div class="img-slot" style="background:#fff; overflow:hidden; position:relative; cursor:pointer; border-radius:8px;" data-fi="fi-e1-3"><img src="utec3.jpeg" style="display:block; width:100%; height:100%; object-fit:cover;" /></div>
-            <div class="img-slot" style="background:#fff; overflow:hidden; position:relative; cursor:pointer; border-radius:8px;" data-fi="fi-e1-4"><img src="utec4.jpeg" style="display:block; width:100%; height:100%; object-fit:cover;" /></div>
+            <div class="img-slot"><img src="utec1.jpeg" style="display:block;" /></div>
+            <div class="img-slot"><img src="utec2.jpeg" style="display:block;" /></div>
           </div>
         </div>
       </div>
       
-      <!-- Experience 2 -->
       <div class="exp-item fade-in">
         <div class="exp-left">
           <span class="exp-dates">Apr 2026 - Present<br>PPKD Central Jakarta</span>
         </div>
         <div class="exp-right">
-          <h3 class="exp-role">PPKD Hotelier Program – Class Representative</h3>
-          <span class="exp-org">Coordinated class activities and communication flow, assisted in maintaining discipline and training organization, & developed leadership, responsibility, and communication skills.</span>
-          <div class="exp-imgs">
-          </div>
+          <h3 class="exp-role">Hotelier Class Representative</h3>
+          <span class="exp-org">Coordinated class activities and discipline.</span>
         </div>
       </div>
 
-      <!-- Experience 3 -->
       <div class="exp-item fade-in">
         <div class="exp-left">
           <span class="exp-dates">Sep 2023 - Aug 2024<br>Vocational High School</span>
         </div>
         <div class="exp-right">
-          <h3 class="exp-role">Student Organization – Vice President (OSIS)</h3>
-          <span class="exp-org">Assisted in coordinating student organization activities and programs, supported leadership team in planning school events & developed leadership, teamwork, and organizational management skills.</span>
-          <div class="exp-imgs">
+          <h3 class="exp-role">Vice President (OSIS)</h3>
+          <span class="exp-org">Supported leadership team in planning school events.</span>
         </div>
       </div>
-
     </div>
   </section>
 
@@ -737,21 +676,20 @@
   </section>
 
   <footer>
-    <p>© 2026 Rainy Bintang Yurika. Organic Fluid Elegance.</p>
+    <p>©️ 2026 Rainy Bintang Yurika. Organic Fluid Elegance.</p>
   </footer>
 
   <div class="lightbox" id="lightbox">
-    <img id="lightbox-img" src="" alt="" />
+    <img id="lightbox-img" src="" alt="" style="display:none;" />
+    <video id="lightbox-video" controls style="display:none;"></video>
   </div>
 
   <script>
-    // 1. Animasi kemunculan lembut
     const observer = new IntersectionObserver(entries => {
       entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
     }, { threshold: 0.1 });
     document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-    // 2. Active State Navigasi
     const sections = document.querySelectorAll('section[id]');
     const navLinks = document.querySelectorAll('.nav-link');
     window.addEventListener('scroll', () => {
@@ -763,64 +701,55 @@
       });
     });
 
-    // 3. Sistem File Upload & Lightbox (Bebas Bug)
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxVideo = document.getElementById('lightbox-video');
 
-    function openLightbox(src) { lightboxImg.src = src; lightbox.classList.add('active'); }
-    lightbox.addEventListener('click', () => lightbox.classList.remove('active'));
-
-    function bindUpload(triggerEl, fileInputId) {
-      const fi  = document.getElementById(fileInputId);
-      const img = triggerEl.querySelector('img');
-      const ph  = triggerEl.querySelector('.photo-ph, .slot-ph');
-
-      triggerEl.addEventListener('click', e => {
-        e.preventDefault(); e.stopPropagation();
-        if (img && img.style.display === 'block' && img.src) {
-          openLightbox(img.src);
-        } else {
-          if (fi) fi.click();
-        }
-      });
-
-      if (fi) {
-        fi.addEventListener('change', e => {
-          const file = e.target.files[0];
-          if (!file) return;
-          const reader = new FileReader();
-          reader.onload = ev => {
-            if (img) {
-              img.src = ev.target.result;
-              img.style.display = 'block';
-              img.style.cursor = 'zoom-in';
-            }
-            if (ph) ph.style.display = 'none';
-          };
-          reader.readAsDataURL(file);
-        });
+    function openLightbox(src, type) { 
+      if (type === 'video') {
+        lightboxImg.style.display = 'none';
+        lightboxVideo.style.display = 'block';
+        lightboxVideo.src = src;
+      } else {
+        lightboxVideo.style.display = 'none';
+        lightboxImg.style.display = 'block';
+        lightboxImg.src = src;
       }
+      lightbox.classList.add('active'); 
     }
 
-    const heroPhotoEl = document.getElementById('hero-photo-el');
-    if (heroPhotoEl) bindUpload(heroPhotoEl, 'fi-hero');
-
-    document.querySelectorAll('.img-slot[data-fi]').forEach(el => {
-      bindUpload(el, el.dataset.fi);
+    lightbox.addEventListener('click', (e) => { 
+      if (e.target !== lightboxVideo && e.target !== lightboxImg) {
+        lightbox.classList.remove('active'); 
+        lightboxVideo.pause(); 
+      }
     });
 
-    document.querySelectorAll('.img-slot img, .img-slot.q-card img, #hero-img').forEach(img => {
-      const src = img.getAttribute('src');
-      if (src && src !== '') {
+    // Menerapkan logika klik untuk gambar permanen
+    document.querySelectorAll('.img-slot img, #hero-img').forEach(img => {
+      if (img.closest('.drive-image-link')) return;
+
+      if (img.getAttribute('src') && img.getAttribute('src') !== '') {
         img.style.cursor = 'zoom-in';
+        img.parentElement.style.cursor = 'zoom-in';
         img.addEventListener('click', e => {
           e.stopPropagation();
-          openLightbox(img.src);
+          openLightbox(img.src, 'img');
         });
       }
     });
 
-    // 4. Deteksi Perangkat untuk tautan Email
+    // Menerapkan logika klik untuk video permanen
+    document.querySelectorAll('.img-slot video').forEach(vid => {
+      if (vid.getAttribute('src') && vid.getAttribute('src') !== '') {
+        vid.parentElement.style.cursor = 'zoom-in';
+        vid.parentElement.addEventListener('click', e => {
+          e.stopPropagation();
+          openLightbox(vid.src, 'video');
+        });
+      }
+    });
+
     const emailLink = document.getElementById('email-link');
     const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
     if(emailLink) {
